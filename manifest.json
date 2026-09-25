@@ -1,0 +1,122 @@
+{
+  "author": "Manuel <manuel.taso@gmail.com>",
+  "maintainer": "Katie Jobson <k.r.jobson@gmail.com>",
+  "cite": "",
+  "name": "aslscp-nacc",
+  "source": "",
+  "url": "https://github.com/kjobson-neuro/ASLscp",
+  "label": "ASLscp: Self-Contained Processing",
+  "description": "Gear for single-PLD ASL minimal processing",
+  "command": "python3 /flywheel/v0/run.py",
+  "config": {
+    "ld": {
+      "description": "Labeling duration (microseconds)",
+      "type": "integer",
+      "optional": true
+    },
+    "pld": {
+      "description": "Post-labeling delay (microseconds)",
+      "type": "integer",
+      "optional": true
+    },
+    "nbs": {
+      "description": "Number of background suppressions",
+      "type": "integer",
+      "optional": true
+    },
+    "m0_scale": {
+      "description": "M0 scaling factor",
+      "type": "integer",
+      "optional": true
+    },
+    "skip_extended": {
+      "description": "Skip registration, atlas extraction, and PDF generation. Only output CBF map.",
+      "type": "boolean",
+      "optional": true
+    },
+    "run_t1w_reg": {
+      "description": "Register CBF map to provided T1w image.",
+      "type": "boolean",
+      "optional": true
+    },
+    "subject_id": {
+      "description": "Subject ID for output file naming (e.g., '01' or 'SUBJ001'). If not provided, will be extracted from Flywheel metadata or input filename. Required when bids_output is enabled and input is not BIDS-formatted.",
+      "type": "string",
+      "optional": true
+    },
+    "bids_output": {
+      "description": "Output files in BIDS derivatives format. If input filenames are BIDS-compliant, subject/session labels will be extracted automatically. Otherwise, subject_id config is required.",
+      "type": "boolean",
+      "optional": true
+    }
+  },
+  "license": "MIT",
+  "version": "0.1.0",
+  "environment": {
+    "FLYWHEEL": "/flywheel/v0",
+    "PYTHON_GET_PIP_URL": "https://github.com/pypa/get-pip/raw/0d8570dc44796f4369b652222cf176b3db6ac70e/public/get-pip.py",
+    "PATH": ":/opt/freesurfer/bin:/opt/freesurfer/tktools:/opt/freesurfer/mni/bin:/opt/fsl-6.0.7.1/bin:/opt/ants-2.5.4/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin",
+    "LANG": "en_US.UTF-8",
+    "PYTHON_VERSION": "3.13.0",
+    "PWD": "/flywheel/v0",
+    "PYTHON_GET_PIP_SHA256": "96461deced5c2a487ddc65207ec5a9cffeca0d34e7af7ea1afc470ff0d746207",
+    "PYTHONPATH": "/usr/local/lib/python3.12/site-packages:/usr/local/flywheel/lib/",
+    "BASEDIR": "/opt/base",
+    "MINC_LIB_DIR": "/opt/freesurfer/mni/lib",
+    "FREESURFER_HOME": "/opt/freesurfer",
+    "MINC_BIN_DIR": "/opt/freesurfer/mni/bin",
+    "PYTHONNOUSERSITE": "1",
+    "FSLDIR": "/opt/fsl-6.0.7.1",
+    "ANTSPATH": "/opt/ants-2.5.4/bin",
+    "FUNCTIONALS_DIR": "/opt/freesurfer/sessions",
+    "FSLMULTIFILEQUIT": "TRUE",
+    "OS": "Linux",
+    "PERL5LIB": "/opt/freesurfer/mni/lib/perl5/5.8.5",
+    "FSLGECUDAQ": "cuda.q",
+    "MNI_DIR": "/opt/freesurfer/mni",
+    "FSLOUTPUTTYPE": "NIFTI_GZ",
+    "MNI_PERL5LIB": "/opt/freesurfer/mni/lib/perl5/5.8.5",
+    "LOCAL_DIR": "/opt/freesurfer/local",
+    "FS_OVERRIDE": "0",
+    "FSF_OUTPUT_FORMAT": "nii.gz",
+    "MNI_DATAPATH": "/opt/freesurfer/mni/data",
+    "LC_ALL": "C.UTF-8",
+    "SUBJECTS_DIR": "/opt/freesurfer/subjects",
+    "MKL_NUM_THREADS": "1",
+    "OMP_NUM_THREADS": "1",
+    "LD_LIBRARY_PATH": "/opt/fsl-6.0.7.1/bin:",
+    "DEBIAN_FRONTEND": "noninteractive",
+    "FSLTCLSH": "/opt/fsl-6.0.7.1/bin/fsltclsh",
+    "FSLWISH": "/opt/fsl-6.0.7.1/bin/fslwish",
+    "LC_NUMERIC": "en_US.UTF-8",
+    "LIBOMP_NUM_HIDDEN_HELPER_THREADS": "0",
+    "LIBOMP_USE_HIDDEN_HELPER_TASK": "0"
+  },
+  "custom": {
+    "gear-builder": {
+      "category": "analysis",
+      "image": "kjobson/aslscp-nacc:0.1.0"
+    },
+    "flywheel": {
+      "suite": "BrainScienceCenter"
+    }
+  },
+  "inputs": {
+    "api_key": {
+      "base": "api-key"
+    },
+    "m0": {
+      "base": "file",
+      "description": "M0 calibration image (DICOM zip or NIfTI file)"
+    },
+    "asl": {
+      "base": "file",
+      "description": "ASL timeseries data (DICOM zip or NIfTI file)"
+    },
+    "t1w": {
+      "base": "file",
+      "description": "T1w image (DICOM zip or NIfTI file)",
+      "optional": true
+    }
+  }
+}
