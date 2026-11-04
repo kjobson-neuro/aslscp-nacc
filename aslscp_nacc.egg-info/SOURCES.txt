@@ -1,0 +1,6 @@
+pyproject.toml
+aslscp_nacc.egg-info/PKG-INFO
+aslscp_nacc.egg-info/SOURCES.txt
+aslscp_nacc.egg-info/dependency_links.txt
+aslscp_nacc.egg-info/requires.txt
+aslscp_nacc.egg-info/top_level.txt

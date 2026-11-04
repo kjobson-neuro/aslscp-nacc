@@ -7,7 +7,7 @@
   "url": "https://github.com/kjobson-neuro/ASLscp",
   "label": "ASLscp: Self-Contained Processing",
   "description": "Gear for single-PLD ASL minimal processing",
-  "command": "python3 /flywheel/v0/run.py",
+  "command": "/usr/bin/python3 /flywheel/v0/run.py",
   "config": {
     "ld": {
       "description": "Labeling duration (microseconds)",
@@ -51,7 +51,7 @@
     }
   },
   "license": "MIT",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "environment": {
     "FLYWHEEL": "/flywheel/v0",
     "PYTHON_GET_PIP_URL": "https://github.com/pypa/get-pip/raw/0d8570dc44796f4369b652222cf176b3db6ac70e/public/get-pip.py",
@@ -90,15 +90,16 @@
     "FSLWISH": "/opt/fsl-6.0.7.1/bin/fslwish",
     "LC_NUMERIC": "en_US.UTF-8",
     "LIBOMP_NUM_HIDDEN_HELPER_THREADS": "0",
-    "LIBOMP_USE_HIDDEN_HELPER_TASK": "0"
+    "LIBOMP_USE_HIDDEN_HELPER_TASK": "0",
+    "BASE_DIR": "/flywheel/v0"
   },
   "custom": {
     "gear-builder": {
       "category": "analysis",
-      "image": "kjobson/aslscp-nacc:0.1.0"
+      "image": "kjobson/aslscp-nacc:1.0.0"
     },
     "flywheel": {
-      "suite": "BrainScienceCenter"
+      "suite": "Analysis"
     }
   },
   "inputs": {
